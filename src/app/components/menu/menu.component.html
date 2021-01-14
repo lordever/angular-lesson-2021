@@ -1,0 +1,17 @@
+<div class="ui raised very padded container segment">
+  <div class="ui container center aligned">
+    <div class="ui secondary menu column">
+      <a class="item" (click)="changeCategory($event)">
+        Home
+      </a>
+      <a *ngFor="let category of categories"
+         class="item"
+         [class.active]="category === selectedCategory" (click)="changeCategory($event, category)">
+        {{category}}
+      </a>
+      <ng-container *ngIf="childTemplate">
+        <ng-template [ngTemplateOutlet]="childTemplate"></ng-template>
+      </ng-container>
+    </div>
+  </div>
+</div>
