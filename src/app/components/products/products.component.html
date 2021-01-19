@@ -1,0 +1,8 @@
+<div class="ui container">
+  <h1 *ngIf="searchValue">Searched value: {{searchValue}}</h1>
+  <div class="ui grid column app-products">
+    <div *ngFor="let product of productList" class="eight wide column">
+      <app-product-item [product]="product"></app-product-item>
+    </div>
+  </div>
+</div>

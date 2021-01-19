@@ -1,0 +1,14 @@
+<div *ngIf="product" class="ui card centered">
+  <div class="content">
+    <div class="header">{{product.name}}</div>
+  </div>
+  <div class="content">
+    <h4 class="ui sub header">{{product.description}}</h4>
+  </div>
+  <div class="extras content">
+        <span class="middle floated" appLargeText>
+            {{product?.price | currency : currentCurrency}}
+        </span>
+    <button class="ui button primary right floated" (click)="onAddToCart()">Add to cart</button>
+  </div>
+</div>
