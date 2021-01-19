@@ -1,40 +1,25 @@
 <div class="app-container">
-  <app-menu [categories]="getCategories()" [childTemplate]="rightMenu" (selectCategory)="onChangeCategory($event)"></app-menu>
-  <div class="ui container">
-    <h1 *ngIf="searchValue">Searched value: {{searchValue}}</h1>
-    <div class="ui grid column app-container-products">
-      <div *ngFor="let product of productList" class="eight wide column">
-        <div class="ui card centered">
-          <div class="content">
-            <div class="header">{{product.name}}</div>
-          </div>
-          <div class="content">
-            <h4 class="ui sub header">{{product.description}}</h4>
-          </div>
-          <div class="extra content">
-            <span class="middle floated" appLargeText>
-              {{product.price | currency : currentCurrency}}
-            </span>
-            <button class="ui button primary right floated" (click)="addToCart()">Add to cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-menu [childTemplate]="rightMenu">
+  </app-menu>
+  <router-outlet>
+  </router-outlet>
 </div>
 
 <ng-template #rightMenu>
   <div class="right menu">
     <div class="item">
       <div class="ui icon input">
-        <input type="text" (keydown)="searchProducts($event)" [(ngModel)]="searchValue" placeholder="Search...">
+        <input type="text" [(ngModel)]="searchValue" (keydown)="searchProducts($event)" placeholder="Search...">
         <i class="search link icon"></i>
       </div>
     </div>
     <div class="item">
       <button class="ui icon button circular">
         <i class="shop icon"></i>
-        <span style="padding-left:3px;" *ngIf="cartQuantity">{{cartQuantity}}</span>
+        <span style="padding-left:3px;" *ngIf="cartCount">{{cartCount}}</span>
+      </button>
+      <button class="ui icon button circular" style="margin-left:10px;" routerLink="/user-profile">
+        <i class="user icon"></i>
       </button>
     </div>
   </div>

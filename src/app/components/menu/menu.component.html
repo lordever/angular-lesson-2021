@@ -1,11 +1,12 @@
 <div class="ui raised very padded container segment">
   <div class="ui container center aligned">
     <div class="ui secondary menu column">
-      <a class="item" (click)="changeCategory($event)">
+      <a class="item" (click)="changeCategory($event)" [routerLink]="'/products'">
         Home
       </a>
       <a *ngFor="let category of categories"
          class="item"
+         [routerLink]="['/products', category]"
          [class.active]="category === selectedCategory" (click)="changeCategory($event, category)">
         {{category}}
       </a>

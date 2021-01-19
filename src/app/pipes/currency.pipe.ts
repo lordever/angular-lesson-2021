@@ -4,7 +4,7 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'currency'
 })
 export class CurrencyPipe implements PipeTransform {
-  transform(price: number, currency: string = 'руб.'): string {
+  transform(price?: number, currency: string = 'руб.'): string {
     return `${price} ${currency}`;
   }
 }
