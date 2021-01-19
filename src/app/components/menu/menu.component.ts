@@ -1,26 +1,27 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.less']
 })
-export class MenuComponent {
-
-  @Input() categories: string[] = [];
-
+export class MenuComponent implements OnInit {
   @Input() childTemplate?: TemplateRef<any>;
 
-  @Output() selectCategory = new EventEmitter<string>();
+  public categories: string[] = [];
 
   public selectedCategory = '';
 
-  constructor() {
+  constructor(private productService: ProductService) {
+  }
+
+  ngOnInit(): void {
+    this.categories = this.productService.getCategories();
   }
 
   public changeCategory(event: MouseEvent, newCategory: string = ''): void {
     event.preventDefault();
     this.selectedCategory = newCategory;
-    this.selectCategory.emit(this.selectedCategory);
   }
 }
