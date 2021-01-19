@@ -1,5 +1,6 @@
 <div class="app-container">
-  <app-menu [categories]="getCategories()" [childTemplate]="rightMenu" (selectCategory)="onChangeCategory($event)"></app-menu>
+  <app-menu [categories]="getCategories()" [childTemplate]="rightMenu"
+            (selectCategory)="onChangeCategory($event)"></app-menu>
   <div class="ui container">
     <h1 *ngIf="searchValue">Searched value: {{searchValue}}</h1>
     <div class="ui grid column app-container-products">
