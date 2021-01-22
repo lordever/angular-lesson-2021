@@ -1,8 +1,18 @@
-<div class="ui container">
-  <h1 *ngIf="searchValue">Searched value: {{searchValue}}</h1>
+<div class="ui container" style="height:800px">
+  <ng-container *ngIf="loader$ | async; else loader">
+    <div class="ui segment" style="margin-top: 10px; height:100%">
+      <div class="ui active inverted dimmer">
+        <div class="ui text loader">Loading</div>
+      </div>
+      <p></p>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #loader>
   <div class="ui grid column app-products">
-    <div *ngFor="let product of productList" class="eight wide column">
+    <div *ngFor="let product of productList$ | async" class="eight wide column">
       <app-product-item [product]="product"></app-product-item>
     </div>
   </div>
-</div>
+</ng-template>

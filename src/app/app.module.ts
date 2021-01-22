@@ -8,7 +8,8 @@ import {ProductsModule} from './components/products/products.module';
 import {CommonModule} from '@angular/common';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {AppRoutingModule} from './app-routing.module';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     PageNotFoundComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     CommonModule,
     FormsModule,

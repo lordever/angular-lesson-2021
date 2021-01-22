@@ -7,6 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "server": "json-server server/mocks/products.mock.json --routes server/api.routes.json --no-cors=true",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -19,12 +20,13 @@
     "@angular/platform-browser": "~11.0.6",
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
-    "semantic-ui-css": "^2.4.1",
     "rxjs": "~6.6.0",
+    "semantic-ui-css": "^2.4.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "json-server": "^0.16.3",
     "@angular-devkit/build-angular": "~0.1100.6",
     "@angular/cli": "~11.0.6",
     "@angular/compiler-cli": "~11.0.6",

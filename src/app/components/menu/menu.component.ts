@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {ProductService} from '../../services/product.service';
+import {ReplaySubject, Subject} from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,7 @@ import {ProductService} from '../../services/product.service';
 export class MenuComponent implements OnInit {
   @Input() childTemplate?: TemplateRef<any>;
 
-  public categories: string[] = [];
+  public categories$: Subject<string[]> = new ReplaySubject<string[]>();
 
   public selectedCategory = '';
 
@@ -17,7 +18,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories = this.productService.getCategories();
+    this.productService.getCategories().subscribe(categories => this.categories$.next(categories));
   }
 
   public changeCategory(event: MouseEvent, newCategory: string = ''): void {
