@@ -1,13 +1,111 @@
 <div class="ui container app-container-user-profile">
-  <form class="ui form">
+  <!-- ПРИМЕР Template-Driven формы -->
+
+<!--    <form class="ui form">-->
+<!--      <div class="field">-->
+<!--        <label>First Name</label>-->
+<!--        <input #firstName="ngModel"-->
+<!--               [(ngModel)]="user.firstName"-->
+<!--               minlength="3"-->
+<!--               name="first-name"-->
+<!--               placeholder="First Name"-->
+<!--               required-->
+<!--               type="text">-->
+
+<!--        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"-->
+<!--             class="error">-->
+<!--          <div *ngIf="firstName.errors?.required"> First Name is required</div>-->
+<!--          <div *ngIf="firstName.errors?.minlength"> First Name must be at least 3 characters long</div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      <div class="field">-->
+<!--        <label>Last Name</label>-->
+<!--        <input #lastName="ngModel"-->
+<!--               [(ngModel)]="user.lastName"-->
+<!--               minlength="3"-->
+<!--               name="last-name"-->
+<!--               placeholder="Last Name"-->
+<!--               required-->
+<!--               type="text">-->
+
+<!--        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"-->
+<!--             class="error">-->
+<!--          <div *ngIf="lastName.errors?.required"> Last Name is required</div>-->
+<!--          <div *ngIf="lastName.errors?.minlength"> Last Name must be at least 3 characters long</div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--      <div class="field">-->
+<!--        <label>Email</label>-->
+<!--        <input #email="ngModel"-->
+<!--               [(ngModel)]="user.email"-->
+<!--               name="email"-->
+<!--               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"-->
+<!--               placeholder="Email"-->
+<!--               required-->
+<!--               type="email">-->
+
+<!--        <div *ngIf="email.invalid && (email.dirty || email.touched)"-->
+<!--             class="error">-->
+<!--          <div *ngIf="email.errors?.required"> Email is required</div>-->
+<!--          <div *ngIf="email.errors?.pattern"> Email must be correct (email@email.com)</div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--      <button [disabled]="firstName.invalid||lastName.invalid||email.invalid" class="ui button" type="submit">Submit</button>-->
+<!--    </form>-->
+
+
+  <!-- ПРИМЕР Reactive формы -->
+  <form [formGroup]=userForm class="ui form">
     <div class="field">
-      <label>First Name</label>
-      <input type="text" name="first-name" placeholder="First Name">
+      <label>Reactive First Name</label>
+      <input formControlName="firstName"
+             name="first-name"
+             placeholder="First Name"
+             required
+             type="text">
+
+      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+           class="error">
+        <div *ngIf="firstName?.errors?.required"> First Name is required</div>
+        <div *ngIf="firstName?.errors?.minlength"> First Name must be at least 3 characters long</div>
+      </div>
+
     </div>
     <div class="field">
-      <label>Last Name</label>
-      <input type="text" name="last-name" placeholder="Last Name">
+      <label>Reactive Last Name</label>
+      <input formControlName="lastName"
+             name="last-name"
+             placeholder="Last Name"
+             required
+             type="text">
+
+      <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+           class="error">
+        <div *ngIf="lastName?.errors?.required"> Last Name is required</div>
+        <div *ngIf="lastName?.errors?.minlength"> Last Name must be at least 3 characters long</div>
+      </div>
+
     </div>
-    <button class="ui button" type="submit">Submit</button>
+    <div class="field">
+      <label>Reactive Email</label>
+      <input formControlName="email"
+             name="email"
+             placeholder="Email"
+             required
+             type="email">
+
+      <div *ngIf="email.invalid && (email.dirty || email?.touched)"
+           class="error">
+        <div *ngIf="email?.errors?.required"> Email is required</div>
+        <div *ngIf="email?.errors?.pattern"> Email must be correct (email@email.com)</div>
+      </div>
+
+    </div>
+    <button [disabled]="userForm.invalid" class="ui button" type="submit">Submit</button>
   </form>
 </div>
