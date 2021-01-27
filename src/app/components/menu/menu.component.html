@@ -4,7 +4,7 @@
       <a class="item" (click)="changeCategory($event)" [routerLink]="'/products'">
         Home
       </a>
-      <a *ngFor="let category of categories"
+      <a *ngFor="let category of categories$ | async"
          class="item"
          [routerLink]="['/products', category]"
          [class.active]="category === selectedCategory" (click)="changeCategory($event, category)">
